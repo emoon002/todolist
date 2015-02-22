@@ -49,7 +49,6 @@ var addTask = function() {
   
   inputTask.value = "";
 }
-  
 
 //Edit existing tasks
 var editTask = function() {
@@ -59,16 +58,23 @@ var editTask = function() {
   var editInput = listItem.querySelector("input[type=text]");
   var label = listItem.querySelector("label");
   var containsClass = listItem.classList.contains("editMode");
+  var toggleText = listItem.getElementsByTagName("button")[0];
 
   //If parent class is .editMode
   if(containsClass) {
     //Switch from .editMode
     //Set label text to input value
     label.innerText = editInput.value;
+    
+    //Set button text to edit
+    toggleText.innerText = "Edit";
   } else {
     //Switch to .editMode
     //Set label text to input value
     editInput.value = label.innerText;
+
+    //Set button text to save
+    toggleText.innerText = "Save";
   }
 
   //Toggle parent .editMode on li
